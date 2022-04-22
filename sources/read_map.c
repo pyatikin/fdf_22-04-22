@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vbrazhni <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: tgwin <tgwin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/06 15:27:20 by vbrazhni          #+#    #+#             */
-/*   Updated: 2018/08/06 15:27:21 by vbrazhni         ###   ########.fr       */
+/*   Updated: 2022/04/22 16:36:04 by tgwin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ static void			free_strsplit_arr(char **arr)
 /*
 ** Create t_coord_val element with information about z and color value
 */
-
+#include <stdio.h>
 static t_coord_val	*new_coord(char *s)
 {
 	t_coord_val	*coord;

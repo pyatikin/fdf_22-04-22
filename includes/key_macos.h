@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   key_macos.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vbrazhni <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: tgwin <tgwin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/06 16:18:47 by vbrazhni          #+#    #+#             */
-/*   Updated: 2018/08/06 16:18:49 by vbrazhni         ###   ########.fr       */
+/*   Updated: 2022/04/22 15:24:18 by tgwin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,27 +22,27 @@
 # define MOUSE_SCROLL_LEFT	6
 # define MOUSE_SCROLL_RIGHT	7
 
-# define ARROW_UP			126
-# define ARROW_DOWN			125
-# define ARROW_LEFT			123
-# define ARROW_RIGHT		124
+# define ARROW_UP			65362
+# define ARROW_DOWN			65364
+# define ARROW_LEFT			65361
+# define ARROW_RIGHT		65363
 
 # define NUM_PAD_0			82
-# define NUM_PAD_1			83
-# define NUM_PAD_2			84
-# define NUM_PAD_3			85
-# define NUM_PAD_4			86
+# define NUM_PAD_1			65436
+# define NUM_PAD_2			65433
+# define NUM_PAD_3			65435
+# define NUM_PAD_4			65430
 # define NUM_PAD_5			87
-# define NUM_PAD_6			88
-# define NUM_PAD_7			89
-# define NUM_PAD_8			91
-# define NUM_PAD_9			92
-# define NUM_PAD_PLUS		69
-# define NUM_PAD_MINUS		78
+# define NUM_PAD_6			65432
+# define NUM_PAD_7			65429
+# define NUM_PAD_8			65431
+# define NUM_PAD_9			65434
+# define NUM_PAD_PLUS		65451
+# define NUM_PAD_MINUS		65453
 
-# define MAIN_PAD_ESC		53
-# define MAIN_PAD_I			34
-# define MAIN_PAD_P			35
+# define MAIN_PAD_ESC		65307
+# define MAIN_PAD_I			105
+# define MAIN_PAD_P			112
 # define MAIN_PAD_0			29
 # define MAIN_PAD_1			18
 # define MAIN_PAD_2			19

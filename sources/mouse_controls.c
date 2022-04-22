@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mouse_controls.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vbrazhni <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: tgwin <tgwin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/06 15:29:19 by vbrazhni          #+#    #+#             */
-/*   Updated: 2018/08/06 15:29:36 by vbrazhni         ###   ########.fr       */
+/*   Updated: 2022/04/22 15:35:58 by tgwin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,11 @@
 /*
 ** Handle mouse press
 */
-
+#include <stdio.h>
 int			mouse_press(int button, int x, int y, void *param)
 {
 	t_fdf	*fdf;
-
+	printf("button = %i\n", button);
 	(void)x;
 	(void)y;
 	fdf = (t_fdf *)param;
@@ -43,7 +43,7 @@ int			mouse_press(int button, int x, int y, void *param)
 int			mouse_release(int button, int x, int y, void *param)
 {
 	t_fdf	*fdf;
-
+	printf("button = %i\n", button);
 	(void)x;
 	(void)y;
 	(void)button;
@@ -59,7 +59,7 @@ int			mouse_release(int button, int x, int y, void *param)
 int			mouse_move(int x, int y, void *param)
 {
 	t_fdf	*fdf;
-
+	printf("x/y = %i, %i", x, y);
 	fdf = (t_fdf *)param;
 	fdf->mouse->previous_x = fdf->mouse->x;
 	fdf->mouse->previous_y = fdf->mouse->y;

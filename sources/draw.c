@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vbrazhni <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: tgwin <tgwin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/06 15:27:28 by vbrazhni          #+#    #+#             */
-/*   Updated: 2018/08/06 15:27:30 by vbrazhni         ###   ########.fr       */
+/*   Updated: 2022/04/22 20:11:11 by tgwin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ static void	draw_line(t_point f, t_point s, t_fdf *fdf)
 	while (cur.x != s.x || cur.y != s.y)
 	{
 		put_pixel(fdf, cur.x, cur.y, get_color(cur, f, s, delta));
-		if ((error[1] = error[0] * 2) > -delta.y)
+		if ((error[1] = error[0]) > -delta.y)
 		{
 			error[0] -= delta.y;
 			cur.x += sign.x;
@@ -87,7 +87,8 @@ static void	draw_background(t_fdf *fdf)
 	i = 0;
 	while (i < HEIGHT * WIDTH)
 	{
-		image[i] = (i % WIDTH < MENU_WIDTH) ? MENU_BACKGROUND : BACKGROUND;
+		//image[i] = (i % WIDTH < MENU_WIDTH) ? MENU_BACKGROUND : BACKGROUND;
+		image[i] = BACKGROUND;
 		i++;
 	}
 }
@@ -119,5 +120,5 @@ void		draw(t_map *map, t_fdf *fdf)
 		y++;
 	}
 	mlx_put_image_to_window(fdf->mlx, fdf->win, fdf->img, 0, 0);
-	print_menu(fdf);
+	//print_menu(fdf);
 }

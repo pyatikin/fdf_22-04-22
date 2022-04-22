@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fdf.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vbrazhni <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: tgwin <tgwin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/02 10:39:59 by vbrazhni          #+#    #+#             */
-/*   Updated: 2018/08/02 10:40:00 by vbrazhni         ###   ########.fr       */
+/*   Updated: 2022/04/22 20:56:05 by tgwin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,7 +129,7 @@ t_point					project(t_point p,
 
 void					print_menu(t_fdf *fdf);
 
-int						close(void *param);
+int						ft_close(void *param);
 
 void					setup_controls(t_fdf *fdf);
 

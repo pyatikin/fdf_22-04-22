@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   keyboard_controls.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vbrazhni <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: tgwin <tgwin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/06 16:58:39 by vbrazhni          #+#    #+#             */
-/*   Updated: 2018/08/06 16:58:40 by vbrazhni         ###   ########.fr       */
+/*   Updated: 2022/04/22 21:02:52 by tgwin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 ** "key_macos.h" for key codes
 ** <stdlib.h> for exit()
 */
-
+#include "../minilibx-linux/mlx_int.h"
 #include "fdf.h"
 #include "key_macos.h"
 #include <stdlib.h>
@@ -24,14 +24,28 @@
 /*
 ** Handle key press
 */
-
+#include <stdio.h>
 int			key_press(int key, void *param)
 {
 	t_fdf	*fdf;
-
+	
+	//printf("key = %i\n", key);
 	fdf = (t_fdf *)param;
-	if (key == MAIN_PAD_ESC)
+	if (key == MAIN_PAD_ESC){
+		mlx_destroy_image(fdf->mlx, fdf->img);
+		mlx_destroy_window(fdf->mlx, fdf->win);
+		free(fdf->camera);
+		free(fdf->data_addr);
+		free(fdf->map->colors_arr);
+		free(fdf->map->coords_arr);
+		free(fdf->map);
+		free(fdf->mouse);
+		free(fdf->img);
+		free(fdf->mlx);
+		free(fdf->win);
+		free(fdf);
 		exit(0);
+	}
 	if (key == NUM_PAD_PLUS || key == MAIN_PAD_PLUS
 		|| key == NUM_PAD_MINUS || key == MAIN_PAD_MINUS)
 		zoom(key, fdf);
