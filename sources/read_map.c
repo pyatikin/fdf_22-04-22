@@ -6,7 +6,7 @@
 /*   By: tgwin <tgwin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/06 15:27:20 by vbrazhni          #+#    #+#             */
-/*   Updated: 2022/04/22 16:36:04 by tgwin            ###   ########.fr       */
+/*   Updated: 2022/04/25 20:08:00 by tgwin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,6 +109,7 @@ int					read_map(const int fd,
 		ft_strdel(&line);
 		map->height++;
 	}
+	free(line);
 	if (!(*coords_stack))
 		terminate(ERR_MAP);
 	return (result);

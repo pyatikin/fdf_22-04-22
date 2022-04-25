@@ -6,7 +6,7 @@
 /*   By: tgwin <tgwin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/06 16:58:39 by vbrazhni          #+#    #+#             */
-/*   Updated: 2022/04/22 21:02:52 by tgwin            ###   ########.fr       */
+/*   Updated: 2022/04/25 19:46:05 by tgwin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ int			key_press(int key, void *param)
 	if (key == MAIN_PAD_ESC){
 		mlx_destroy_image(fdf->mlx, fdf->img);
 		mlx_destroy_window(fdf->mlx, fdf->win);
+		mlx_destroy_display(fdf->mlx);
 		free(fdf->camera);
 		free(fdf->data_addr);
 		free(fdf->map->colors_arr);
