@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strsplit.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vbrazhni <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: tgwin <tgwin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/02 19:09:23 by vbrazhni          #+#    #+#             */
-/*   Updated: 2018/07/02 19:09:24 by vbrazhni         ###   ########.fr       */
+/*   Updated: 2022/04/26 00:10:55 by tgwin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 static size_t	ft_count_words(char const *s, char c)
 {
-	size_t words;
+	size_t	words;
 
 	words = 0;
 	while (*s)
@@ -32,9 +32,9 @@ static size_t	ft_count_words(char const *s, char c)
 	return (words);
 }
 
-static char		*ft_get_word(char *word, char c)
+static char	*ft_get_word(char *word, char c)
 {
-	char *start;
+	char	*start;
 
 	start = word;
 	while (*word && *word != c)
@@ -43,14 +43,14 @@ static char		*ft_get_word(char *word, char c)
 	return (ft_strdup(start));
 }
 
-static void		ft_free_words(char **words, size_t i)
+static void	ft_free_words(char **words, size_t i)
 {
 	while (i--)
 		ft_strdel(&(words[i]));
 	free(*words);
 }
 
-static char		**ft_get_words(char *s, char c, size_t words_count)
+static char	**ft_get_words(char *s, char c, size_t words_count)
 {
 	char	**words;
 	char	*word;
@@ -79,12 +79,13 @@ static char		**ft_get_words(char *s, char c, size_t words_count)
 	return (words);
 }
 
-char			**ft_strsplit(char const *s, char c)
+char	**ft_strsplit(char const *s, char c)
 {
 	char	**words;
 	char	*line;
 
-	if (!s || !(line = ft_strdup((char *)s)))
+	line = ft_strdup((char *)s);
+	if (!s || !line)
 		return (NULL);
 	words = ft_get_words(line, c, ft_count_words(line, c));
 	free(line);

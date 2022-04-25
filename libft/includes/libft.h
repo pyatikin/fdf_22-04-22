@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vbrazhni <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: tgwin <tgwin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/05 13:39:16 by vbrazhni          #+#    #+#             */
-/*   Updated: 2018/07/05 13:39:17 by vbrazhni         ###   ########.fr       */
+/*   Updated: 2022/04/26 01:05:11 by tgwin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,8 +105,6 @@ void				ft_strclr(char *s);
 
 void				ft_striter(char *s, void (*f)(char *));
 
-void				ft_striteri(char *s, void (*f)(unsigned int, char *));
-
 char				*ft_strmap(char const *s, char (*f)(char));
 
 char				*ft_strmapi(char const *s, char (*f)(unsigned int, char));
@@ -148,10 +146,6 @@ void				ft_lstdelone(t_list **alst, void (*del)(void *, size_t));
 void				ft_lstdel(t_list **alst, void (*del)(void *, size_t));
 
 void				ft_lstadd(t_list **alst, t_list *new);
-
-void				ft_lstiter(t_list *lst, void (*f)(t_list *elem));
-
-t_list				*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
 
 int					ft_isupper(int c);
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strndup.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vbrazhni <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: tgwin <tgwin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/04 16:10:17 by vbrazhni          #+#    #+#             */
-/*   Updated: 2018/07/04 16:10:19 by vbrazhni         ###   ########.fr       */
+/*   Updated: 2022/04/26 01:06:02 by tgwin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,8 @@ char	*ft_strndup(const char *s1, size_t n)
 	char	*result;
 
 	len = ft_strnlen(s1, n);
-	if ((result = ft_strnew(len)))
+	result = ft_strnew(len);
+	if (result)
 	{
 		i = 0;
 		while (i < len)

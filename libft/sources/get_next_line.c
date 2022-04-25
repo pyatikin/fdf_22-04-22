@@ -3,88 +3,108 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vbrazhni <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: tgwin <tgwin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/26 13:48:27 by vbrazhni          #+#    #+#             */
-/*   Updated: 2018/07/26 13:48:29 by vbrazhni         ###   ########.fr       */
+/*   Updated: 2022/04/26 00:15:01 by tgwin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-#include "libft.h"
 #include <unistd.h>
 #include <stdlib.h>
 
-static t_file	*new_file(const int fd)
+size_t	ft_strlen(char *s)
 {
-	t_file *new;
+	size_t	len;
 
-	if ((new = (t_file *)ft_memalloc(sizeof(t_file))))
-	{
-		new->fd = fd;
-		new->str = NULL;
-	}
-	return (new);
+	len = 0;
+	while (s[len])
+		len++;
+	return (len);
 }
 
-static t_file	*get_file(const int fd, t_file **head)
-{
-	t_file *lst;
-
-	if (!(*head))
-		return (*head = new_file(fd));
-	lst = *head;
-	while (lst->next && lst->fd != fd)
-		lst = lst->next;
-	return ((lst->fd == fd) ? lst : (lst->next = new_file(fd)));
-}
-
-static int		str_divide(char **str, char **line)
+char	*ft_strdup(char *s)
 {
 	char	*new;
-	char	*div;
+	char	*res;
 
-	if (!(*line = ft_strsubchr(*str, '\n')))
-		return (-1);
-	div = ft_strchrs(*str, '\n');
-	div++;
-	if (!ft_strlen(div))
-	{
-		free(*str);
-		*str = NULL;
-		return (1);
-	}
-	new = ft_strdup(div);
-	free(*str);
-	*str = new;
-	return ((new) ? 1 : -1);
+	new = malloc(ft_strlen(s) + 1);
+	res = new;
+	while (*s)
+		*new++ = *s++;
+	*new = 0;
+	return (res);
 }
 
-int				get_next_line(const int fd, char **line)
+char	*ft_strchr(char *s, char c)
 {
-	static t_file	*head = NULL;
-	t_file			*f;
-	char			buff[BUFF_SIZE + 1];
-	ssize_t			size;
-	char			*tmp;
+	if (*s == c)
+		return (s);
+	while (*s++)
+		if (*s == c)
+			return (s);
+	return (NULL);
+}
 
-	if (fd < 0 || !line || read(fd, buff, 0) < 0 || !(f = get_file(fd, &head)))
+char	*ft_strjoin(char *s1, char *s2)
+{
+	char	*new;
+	char	*res;
+
+	new = malloc(ft_strlen(s1) + ft_strlen(s2) + 1);
+	res = new;
+	while (*s1)
+		*new++ = *s1++;
+	while (*s2)
+		*new++ = *s2++;
+	*new = 0;
+	return (res);
+}
+
+char	*ft_substr(char *s, int start, int len)
+{
+	char	*new;
+	char	*res;
+
+	new = malloc(len + 1);
+	res = new;
+	while (start--)
+		s++;
+	while (len-- && *s)
+		*new++ = *s++;
+	*new = 0;
+	return (res);
+}
+
+int	get_next_line(int fd, char **line)
+{
+	static char	*s;
+	char		buf[1025];
+	char		*pos;
+	char		*tmp;
+	int			ret;
+
+	if (!line || (!s && !(s = ft_strdup(""))))
 		return (-1);
-	while (!ft_strchrs(f->str, '\n'))
+	while ((pos = ft_strchr(s, '\n')) == 0)
 	{
-		if (!(size = read(fd, buff, BUFF_SIZE)))
-		{
-			if (!(*line = f->str))
-				return (0);
-			f->str = NULL;
-			return (1);
-		}
-		buff[size] = '\0';
-		tmp = f->str;
-		f->str = ft_strjoin(f->str, buff);
+		if ((ret = read(fd, buf, 1024)) == 0)
+			break ;
+		buf[ret] = 0;
+		tmp = s;
+		s = ft_strjoin(s, buf);
 		free(tmp);
-		if (!f->str)
-			return (-1);
 	}
-	return (str_divide(&(f->str), line));
+	if (pos)
+	{
+		*line = ft_substr(s, 0, pos - s);
+		tmp = s;
+		s = ft_substr(s, pos - s + 1, ft_strlen(s));
+		free(tmp);
+		return (1);
+	}
+	*line = ft_strdup(s);
+	free(s);
+	return (0);
 }

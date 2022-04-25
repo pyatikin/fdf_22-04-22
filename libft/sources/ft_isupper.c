@@ -3,14 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_isupper.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vbrazhni <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: tgwin <tgwin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/01 15:37:33 by vbrazhni          #+#    #+#             */
-/*   Updated: 2018/07/01 15:37:34 by vbrazhni         ###   ########.fr       */
+/*   Updated: 2022/04/26 01:07:58 by tgwin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int		ft_isupper(int c)
+int	ft_isupper(int c)
 {
-	return (c >= 'A' && c <= 'Z');
+	if (c >= 'A' && c <= 'Z')
+		return (1);
+	return (0);
 }

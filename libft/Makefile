@@ -1,14 +1,14 @@
-#******************************************************************************#
+# **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: vbrazhni <marvin@42.fr>                    +#+  +:+       +#+         #
+#    By: tgwin <tgwin@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/07/05 13:39:23 by vbrazhni          #+#    #+#              #
-#    Updated: 2018/08/06 13:57:14 by vbrazhni         ###   ########.fr        #
+#    Updated: 2022/04/26 01:03:59 by tgwin            ###   ########.fr        #
 #                                                                              #
-#******************************************************************************#
+# **************************************************************************** #
 
 NAME = libft.a
 CC = clang
@@ -53,7 +53,6 @@ SOURCES_LIST = ft_memset.c\
 	ft_strdel.c\
 	ft_strclr.c\
 	ft_striter.c\
-	ft_striteri.c\
 	ft_strmap.c\
 	ft_strmapi.c\
 	ft_strequ.c\
@@ -75,8 +74,6 @@ SOURCES_LIST = ft_memset.c\
 	ft_lstdelone.c\
 	ft_lstdel.c\
 	ft_lstadd.c\
-	ft_lstiter.c\
-	ft_lstmap.c\
 	ft_isupper.c\
 	ft_islower.c\
 	ft_isspace.c\

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vbrazhni <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: tgwin <tgwin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/02 15:48:29 by vbrazhni          #+#    #+#             */
-/*   Updated: 2018/07/02 15:48:30 by vbrazhni         ###   ########.fr       */
+/*   Updated: 2022/04/26 01:01:32 by tgwin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,8 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 	size_t	i;
 
 	result = NULL;
-	if (s && f && (result = ft_strnew(ft_strlen(s))))
+	result = ft_strnew(ft_strlen(s));
+	if (s && f && (result))
 	{
 		i = 0;
 		while (s[i])

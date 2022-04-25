@@ -3,26 +3,30 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vbrazhni <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: tgwin <tgwin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/02 21:17:03 by vbrazhni          #+#    #+#             */
-/*   Updated: 2018/07/02 21:17:04 by vbrazhni         ###   ########.fr       */
+/*   Updated: 2022/04/26 00:43:23 by tgwin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int		ft_numlen(int n, int minus)
+static int	ft_numlen(int n, int minus)
 {
-	int numlen;
+	int	numlen;
 
 	numlen = 1;
-	while ((n /= 10))
+	n /= 10;
+	while (n)
+	{
 		numlen++;
+		n /= 10;
+	}
 	return (numlen + minus);
 }
 
-char			*ft_itoa(int n)
+char	*ft_itoa(int n)
 {
 	char	*str;
 	int		numlen;
