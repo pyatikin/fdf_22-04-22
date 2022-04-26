@@ -6,7 +6,7 @@
 /*   By: tgwin <tgwin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/22 17:18:23 by vbrazhni          #+#    #+#             */
-/*   Updated: 2022/04/25 20:40:36 by tgwin            ###   ########.fr       */
+/*   Updated: 2022/04/26 23:02:26 by tgwin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,11 @@
 # include <unistd.h>
 # include <stdlib.h>
 
-int	get_next_line(int fd, char **line);
+int		get_next_line(int fd, char **line);
+size_t	ft_2_strlen(char *s);
+char	*ft_2_strdup(char *s);
+char	*ft_2_strchr(char *s, char c);
+char	*ft_2_strjoin(char *s1, char *s2);
+char	*ft_2_substr(char *s, int start, int len);
 
 #endif

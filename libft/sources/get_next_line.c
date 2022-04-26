@@ -6,7 +6,7 @@
 /*   By: tgwin <tgwin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/26 13:48:27 by vbrazhni          #+#    #+#             */
-/*   Updated: 2022/04/26 00:15:01 by tgwin            ###   ########.fr       */
+/*   Updated: 2022/04/26 23:35:12 by tgwin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,67 +14,21 @@
 #include <unistd.h>
 #include <stdlib.h>
 
-size_t	ft_strlen(char *s)
+void	dop2(char *buf, char **pos, char **s, char **tmp);
+void	dop1(char ***line, char *pos, char **s, char **tmp);
+
+int	ft_check(char **line, char **s, char **pos)
 {
-	size_t	len;
-
-	len = 0;
-	while (s[len])
-		len++;
-	return (len);
-}
-
-char	*ft_strdup(char *s)
-{
-	char	*new;
-	char	*res;
-
-	new = malloc(ft_strlen(s) + 1);
-	res = new;
-	while (*s)
-		*new++ = *s++;
-	*new = 0;
-	return (res);
-}
-
-char	*ft_strchr(char *s, char c)
-{
-	if (*s == c)
-		return (s);
-	while (*s++)
-		if (*s == c)
-			return (s);
-	return (NULL);
-}
-
-char	*ft_strjoin(char *s1, char *s2)
-{
-	char	*new;
-	char	*res;
-
-	new = malloc(ft_strlen(s1) + ft_strlen(s2) + 1);
-	res = new;
-	while (*s1)
-		*new++ = *s1++;
-	while (*s2)
-		*new++ = *s2++;
-	*new = 0;
-	return (res);
-}
-
-char	*ft_substr(char *s, int start, int len)
-{
-	char	*new;
-	char	*res;
-
-	new = malloc(len + 1);
-	res = new;
-	while (start--)
-		s++;
-	while (len-- && *s)
-		*new++ = *s++;
-	*new = 0;
-	return (res);
+	if (!line)
+		return (-1);
+	if (!*s)
+	{
+		*s = ft_2_strdup("");
+		if (!*s)
+			return (-1);
+	}
+	*pos = ft_2_strchr(*s, '\n');
+	return (0);
 }
 
 int	get_next_line(int fd, char **line)
@@ -85,26 +39,39 @@ int	get_next_line(int fd, char **line)
 	char		*tmp;
 	int			ret;
 
-	if (!line || (!s && !(s = ft_strdup(""))))
+	ret = ft_check(line, &s, &pos);
+	if (ret == -1)
 		return (-1);
-	while ((pos = ft_strchr(s, '\n')) == 0)
+	while (pos == 0)
 	{
-		if ((ret = read(fd, buf, 1024)) == 0)
+		ret = read(fd, buf, 1024);
+		if (ret == 0)
 			break ;
 		buf[ret] = 0;
-		tmp = s;
-		s = ft_strjoin(s, buf);
-		free(tmp);
+		dop2(buf, &pos, &s, &tmp);
 	}
 	if (pos)
 	{
-		*line = ft_substr(s, 0, pos - s);
-		tmp = s;
-		s = ft_substr(s, pos - s + 1, ft_strlen(s));
-		free(tmp);
+		dop1(&line, pos, &s, &tmp);
 		return (1);
 	}
-	*line = ft_strdup(s);
+	*line = ft_2_strdup(s);
 	free(s);
 	return (0);
+}
+
+void	dop1(char ***line, char *pos, char **s, char **tmp)
+{
+	**line = ft_2_substr(*s, 0, pos - *s);
+	*tmp = *s;
+	*s = ft_2_substr(*s, pos - *s + 1, ft_2_strlen(*s));
+	free(*tmp);
+}
+
+void	dop2(char *buf, char **pos, char **s, char **tmp)
+{
+	*tmp = *s;
+	*s = ft_2_strjoin(*s, buf);
+	free(*tmp);
+	*pos = ft_2_strchr(*s, '\n');
 }

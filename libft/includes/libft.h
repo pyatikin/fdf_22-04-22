@@ -6,7 +6,7 @@
 /*   By: tgwin <tgwin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/05 13:39:16 by vbrazhni          #+#    #+#             */
-/*   Updated: 2022/04/26 01:05:11 by tgwin            ###   ########.fr       */
+/*   Updated: 2022/04/26 23:36:31 by tgwin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@
 # define FT_INT_MAX		((int)(FT_UINT_MAX >> 1))
 # define FT_INT_MIN		((int)(~FT_INT_MAX))
 
-typedef struct		s_list
+typedef struct s_list
 {
 	void			*content;
 	size_t			content_size;
@@ -71,7 +71,7 @@ char				*ft_strrchr(const char *s, int c);
 char				*ft_strstr(const char *haystack, const char *needle);
 
 char				*ft_strnstr(const char *haystack,
-								const char *needle, size_t len);
+						const char *needle, size_t len);
 
 int					ft_strcmp(const char *s1, const char *s2);
 

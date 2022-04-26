@@ -1,4 +1,5 @@
-#include "../minilibx-linux/mlx_int.h"
+#include "../minilibx/mlx_int.h"
+#include "../minilibx/mlx.h"
 #include "fdf.h"
 #include "key_macos.h"
 #include <stdlib.h>

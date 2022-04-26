@@ -6,7 +6,7 @@
 /*   By: tgwin <tgwin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/29 19:37:47 by vbrazhni          #+#    #+#             */
-/*   Updated: 2022/04/26 20:25:12 by tgwin            ###   ########.fr       */
+/*   Updated: 2022/04/26 21:47:54 by tgwin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 */
 
 #include "../includes/fdf.h"
-#include "../minilibx-linux/mlx.h"
+#include "../minilibx/mlx.h"
 #include "../includes/error_message.h"
 #include <errno.h>
 #include <fcntl.h>
