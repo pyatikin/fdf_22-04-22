@@ -1,21 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   color.c                                            :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: vbrazhni <marvin@42.fr>                    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/08/10 17:28:24 by vbrazhni          #+#    #+#             */
-/*   Updated: 2018/08/10 17:28:25 by vbrazhni         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
-/*
-** "fdf.h" for t_map type and percentage()
-** "color.h" for COLOR_DISCO macros, COLOR_BRICK_RED macros,
-**  COLOR_FLAMINGO macros, COLOR_JAFFA macros and COLOR_SAFFRON macros
-*/
-
 #include "../includes/fdf.h"
 #include "../includes/color.h"
 
@@ -69,13 +51,13 @@ int	get_color(t_point current, t_point start, t_point end, t_point delta)
 	else
 		percentage = percent(start.y, end.y, current.y);
 	red = get_light((start.color >> 16) & 0xFF,
-					(end.color >> 16) & 0xFF,
-					percentage);
+			(end.color >> 16) & 0xFF,
+			percentage);
 	green = get_light((start.color >> 8) & 0xFF,
-					(end.color >> 8) & 0xFF,
-					percentage);
+			(end.color >> 8) & 0xFF,
+			percentage);
 	blue = get_light(start.color & 0xFF,
-					end.color & 0xFF,
-					percentage);
+			end.color & 0xFF,
+			percentage);
 	return ((red << 16) | (green << 8) | blue);
 }

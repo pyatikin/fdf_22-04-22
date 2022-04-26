@@ -6,11 +6,11 @@
 /*   By: tgwin <tgwin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/01 15:37:01 by vbrazhni          #+#    #+#             */
-/*   Updated: 2022/04/25 23:55:28 by tgwin            ###   ########.fr       */
+/*   Updated: 2022/04/26 21:15:24 by tgwin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int		ft_islower(int c)
+int	ft_islower(int c)
 {
 	return (c >= 'a' && c <= 'z');
 }

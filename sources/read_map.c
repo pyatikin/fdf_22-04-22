@@ -1,39 +1,17 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   read_map.c                                         :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: tgwin <tgwin@student.42.fr>                +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/08/06 15:27:20 by vbrazhni          #+#    #+#             */
-/*   Updated: 2022/04/25 20:08:00 by tgwin            ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
-/*
-** "fdf.h" for t_coord_val type, terminate(), ft_isnumber(), ft_atoi_base(),
-**  t_map type and push()
-** "libft.h" for size_t type ("libft.h" includes <string.h>), ft_memalloc()
-**  ft_strsplit(), ft_atoi(), NULL macros ("libft.h" includes <string.h>)
-**  and ft_strdel()
-** "get_next_line.h" for get_next_line()
-** "error_message.h" for ERR_MAP_READING macros and ERR_MAP macros
-** <stdlib.h> for free()
-*/
-
 #include "fdf.h"
 #include "libft.h"
 #include "get_next_line.h"
 #include "error_message.h"
 #include <stdlib.h>
+#include <stdio.h>
 
 /*
 ** Free array that was returned by ft_strsplit()
 */
 
-static void			free_strsplit_arr(char **arr)
+static void	free_strsplit_arr(char **arr)
 {
-	size_t i;
+	size_t	i;
 
 	i = 0;
 	while (arr[i])
@@ -44,22 +22,26 @@ static void			free_strsplit_arr(char **arr)
 /*
 ** Create t_coord_val element with information about z and color value
 */
-#include <stdio.h>
+
 static t_coord_val	*new_coord(char *s)
 {
 	t_coord_val	*coord;
 	char		**parts;
 
-	if (!(coord = (t_coord_val *)ft_memalloc(sizeof(t_coord_val))))
+	coord = (t_coord_val *)ft_memalloc(sizeof(t_coord_val));
+	if (!(coord))
 		terminate(ERR_MAP_READING);
-	if (!(parts = ft_strsplit(s, ',')))
+	parts = ft_strsplit(s, ',');
+	if (!(parts))
 		terminate(ERR_MAP_READING);
 	if (!ft_isnumber(parts[0], 10))
 		terminate(ERR_MAP_READING);
 	if (parts[1] && !ft_isnumber(parts[1], 16))
 		terminate(ERR_MAP_READING);
+	coord->color = -1;
 	coord->z = ft_atoi(parts[0]);
-	coord->color = parts[1] ? ft_atoi_base(parts[1], 16) : -1;
+	if (parts[1])
+		coord->color = ft_atoi_base(parts[1], 16);
 	coord->next = NULL;
 	free_strsplit_arr(parts);
 	return (coord);
@@ -70,7 +52,7 @@ static t_coord_val	*new_coord(char *s)
 ** and them add to stack
 */
 
-static void			parse_line(char **coords_line,
+static void	parse_line(char **coords_line,
 							t_coord_val **coords_stack,
 							t_map *map)
 {
@@ -92,7 +74,7 @@ static void			parse_line(char **coords_line,
 ** Read map from file line by line
 */
 
-int					read_map(const int fd,
+int	read_map(const int fd,
 							t_coord_val **coords_stack,
 							t_map *map)
 {
@@ -100,14 +82,17 @@ int					read_map(const int fd,
 	int		result;
 	char	**coords_line;
 
-	while ((result = get_next_line(fd, &line)) == 1)
+	result = get_next_line(fd, &line);
+	while (result == 1)
 	{
-		if (!(coords_line = ft_strsplit(line, ' ')))
+		coords_line = ft_strsplit(line, ' ');
+		if (!(coords_line))
 			terminate(ERR_MAP_READING);
 		parse_line(coords_line, coords_stack, map);
 		free_strsplit_arr(coords_line);
 		ft_strdel(&line);
 		map->height++;
+		result = get_next_line(fd, &line);
 	}
 	free(line);
 	if (!(*coords_stack))

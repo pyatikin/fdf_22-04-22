@@ -6,7 +6,7 @@
 /*   By: tgwin <tgwin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/02 21:17:03 by vbrazhni          #+#    #+#             */
-/*   Updated: 2022/04/26 00:43:23 by tgwin            ###   ########.fr       */
+/*   Updated: 2022/04/26 21:09:33 by tgwin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,12 @@ char	*ft_itoa(int n)
 	int		minus;
 	int		digit;
 
-	minus = (n < 0) ? 1 : 0;
+	minus = 0;
+	if (n < 0)
+		minus = 1;
 	numlen = ft_numlen(n, minus);
-	if ((str = ft_strnew(numlen)))
+	str = ft_strnew(numlen);
+	if (str)
 	{
 		str[numlen--] = '\0';
 		while (numlen >= minus)

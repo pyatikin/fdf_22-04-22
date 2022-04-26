@@ -6,12 +6,14 @@
 /*   By: tgwin <tgwin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/02 19:09:23 by vbrazhni          #+#    #+#             */
-/*   Updated: 2022/04/26 00:10:55 by tgwin            ###   ########.fr       */
+/*   Updated: 2022/04/26 21:08:51 by tgwin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <stdlib.h>
+
+void	dopfw(char *word, char **words, size_t i);
 
 static size_t	ft_count_words(char const *s, char c)
 {
@@ -43,13 +45,6 @@ static char	*ft_get_word(char *word, char c)
 	return (ft_strdup(start));
 }
 
-static void	ft_free_words(char **words, size_t i)
-{
-	while (i--)
-		ft_strdel(&(words[i]));
-	free(*words);
-}
-
 static char	**ft_get_words(char *s, char c, size_t words_count)
 {
 	char	**words;
@@ -57,7 +52,8 @@ static char	**ft_get_words(char *s, char c, size_t words_count)
 	size_t	i;
 
 	i = 0;
-	if ((words = (char **)ft_memalloc(sizeof(char *) * (words_count + 1))))
+	words = (char **)ft_memalloc(sizeof(char *) * (words_count + 1));
+	if (words)
 	{
 		while (i < words_count)
 		{
@@ -65,11 +61,8 @@ static char	**ft_get_words(char *s, char c, size_t words_count)
 				s++;
 			if (*s)
 			{
-				if (!(word = ft_get_word(s, c)))
-				{
-					ft_free_words(words, i);
-					return (NULL);
-				}
+				word = ft_get_word(s, c);
+				dopfw(word, words, i);
 				words[i++] = word;
 				s += (ft_strlen(word) + 1);
 			}
@@ -77,6 +70,16 @@ static char	**ft_get_words(char *s, char c, size_t words_count)
 		words[i] = NULL;
 	}
 	return (words);
+}
+
+void	dopfw(char *word, char **words, size_t i)
+{
+	if (!word)
+	{
+		while (i--)
+			ft_strdel(&(words[i]));
+		free(*words);
+	}
 }
 
 char	**ft_strsplit(char const *s, char c)

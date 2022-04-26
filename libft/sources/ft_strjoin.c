@@ -6,7 +6,7 @@
 /*   By: tgwin <tgwin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/02 16:40:36 by vbrazhni          #+#    #+#             */
-/*   Updated: 2022/04/26 01:07:21 by tgwin            ###   ########.fr       */
+/*   Updated: 2022/04/26 21:11:08 by tgwin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,9 @@ char	*ft_strjoin(char const *s1, char const *s2)
 
 	if (!s1 && !s2)
 		return (NULL);
-	result = ft_strnew((s1 ? ft_strlen(s1) : 0) + (s2 ? ft_strlen(s2) : 0));
-	if ((start = result))
+	result = ft_strnew(ft_strlen(s1)) + (ft_strlen(s2));
+	start = result;
+	if (start)
 	{
 		if (s1)
 			while (*s1)

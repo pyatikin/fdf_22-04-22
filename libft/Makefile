@@ -6,7 +6,7 @@
 #    By: tgwin <tgwin@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/07/05 13:39:23 by vbrazhni          #+#    #+#              #
-#    Updated: 2022/04/26 01:03:59 by tgwin            ###   ########.fr        #
+#    Updated: 2022/04/26 21:13:01 by tgwin            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -59,7 +59,6 @@ SOURCES_LIST = ft_memset.c\
 	ft_strnequ.c\
 	ft_strsub.c\
 	ft_strjoin.c\
-	ft_strtrim.c\
 	ft_strsplit.c\
 	ft_itoa.c\
 	ft_putchar.c\

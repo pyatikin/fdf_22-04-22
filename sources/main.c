@@ -6,7 +6,7 @@
 /*   By: tgwin <tgwin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/29 19:37:47 by vbrazhni          #+#    #+#             */
-/*   Updated: 2022/04/25 20:43:10 by tgwin            ###   ########.fr       */
+/*   Updated: 2022/04/26 20:25:12 by tgwin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@
 #include <fcntl.h>
 #include <stdlib.h>
 
-int		main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
 	int			fd;
 	t_map		*map;
@@ -40,7 +40,8 @@ int		main(int argc, char **argv)
 	coords_stack = NULL;
 	if (argc == 2)
 	{
-		if (!((fd = open(argv[1], O_RDONLY)) >= 0))
+		fd = open(argv[1], O_RDONLY);
+		if (!((fd) >= 0))
 			terminate(ERR_MAP);
 		map = map_init();
 		if (read_map(fd, &coords_stack, map) == -1)

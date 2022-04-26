@@ -1,30 +1,15 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   mouse_controls.c                                   :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: tgwin <tgwin@student.42.fr>                +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/08/06 15:29:19 by vbrazhni          #+#    #+#             */
-/*   Updated: 2022/04/22 15:35:58 by tgwin            ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
-/*
-** "fdf.h" for t_fdf type, zoom(), boolean values and draw()
-** "key_macos.h" for mouse key codes
-*/
-
 #include "fdf.h"
 #include "key_macos.h"
+#include <stdio.h>
 
 /*
 ** Handle mouse press
 */
-#include <stdio.h>
-int			mouse_press(int button, int x, int y, void *param)
+
+int	mouse_press(int button, int x, int y, void *param)
 {
 	t_fdf	*fdf;
+
 	printf("button = %i\n", button);
 	(void)x;
 	(void)y;
@@ -40,9 +25,10 @@ int			mouse_press(int button, int x, int y, void *param)
 ** Handle mouse release
 */
 
-int			mouse_release(int button, int x, int y, void *param)
+int	mouse_release(int button, int x, int y, void *param)
 {
 	t_fdf	*fdf;
+
 	printf("button = %i\n", button);
 	(void)x;
 	(void)y;
@@ -56,10 +42,10 @@ int			mouse_release(int button, int x, int y, void *param)
 ** Handle mouse move
 */
 
-int			mouse_move(int x, int y, void *param)
+int	mouse_move(int x, int y, void *param)
 {
 	t_fdf	*fdf;
-	printf("x/y = %i, %i", x, y);
+
 	fdf = (t_fdf *)param;
 	fdf->mouse->previous_x = fdf->mouse->x;
 	fdf->mouse->previous_y = fdf->mouse->y;

@@ -1,20 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   project.c                                          :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: vbrazhni <marvin@42.fr>                    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/08/10 17:28:50 by vbrazhni          #+#    #+#             */
-/*   Updated: 2018/08/10 17:28:51 by vbrazhni         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
-/*
-** "fdf.h" for t_fdf type
-** "math.h" for sin(), and cos()
-*/
-
 #include "fdf.h"
 #include "math.h"
 
@@ -24,7 +7,7 @@
 
 static void	rotate_x(int *y, int *z, double alpha)
 {
-	int previous_y;
+	int	previous_y;
 
 	previous_y = *y;
 	*y = previous_y * cos(alpha) + *z * sin(alpha);
@@ -37,7 +20,7 @@ static void	rotate_x(int *y, int *z, double alpha)
 
 static void	rotate_y(int *x, int *z, double beta)
 {
-	int previous_x;
+	int	previous_x;
 
 	previous_x = *x;
 	*x = previous_x * cos(beta) + *z * sin(beta);
@@ -50,8 +33,8 @@ static void	rotate_y(int *x, int *z, double beta)
 
 static void	rotate_z(int *x, int *y, double gamma)
 {
-	int previous_x;
-	int previous_y;
+	int	previous_x;
+	int	previous_y;
 
 	previous_x = *x;
 	previous_y = *y;
@@ -65,8 +48,8 @@ static void	rotate_z(int *x, int *y, double gamma)
 
 static void	iso(int *x, int *y, int z)
 {
-	int previous_x;
-	int previous_y;
+	int	previous_x;
+	int	previous_y;
 
 	previous_x = *x;
 	previous_y = *y;
@@ -78,7 +61,7 @@ static void	iso(int *x, int *y, int z)
 ** Project coordinate to 2D plane
 */
 
-t_point		project(t_point p, t_fdf *fdf)
+t_point	project(t_point p, t_fdf *fdf)
 {
 	p.x *= fdf->camera->zoom;
 	p.y *= fdf->camera->zoom;
@@ -92,6 +75,6 @@ t_point		project(t_point p, t_fdf *fdf)
 		iso(&p.x, &p.y, p.z);
 	p.x += (WIDTH - MENU_WIDTH) / 2 + fdf->camera->x_offset + MENU_WIDTH;
 	p.y += (HEIGHT + fdf->map->height * fdf->camera->zoom) / 2
-												+ fdf->camera->y_offset;
+		+ fdf->camera->y_offset;
 	return (p);
 }

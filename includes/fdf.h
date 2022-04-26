@@ -6,7 +6,7 @@
 /*   By: tgwin <tgwin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/02 10:39:59 by vbrazhni          #+#    #+#             */
-/*   Updated: 2022/04/22 20:56:05 by tgwin            ###   ########.fr       */
+/*   Updated: 2022/04/26 20:32:46 by tgwin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -176,5 +176,7 @@ void					terminate(char *s);
 int						get_index(int x, int y, int width);
 
 t_point					new_point(int x, int y, t_map *map);
+
+void					myfree(int key, t_fdf *fdf);
 
 #endif

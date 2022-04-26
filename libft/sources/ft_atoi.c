@@ -6,11 +6,13 @@
 /*   By: tgwin <tgwin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/01 15:35:30 by vbrazhni          #+#    #+#             */
-/*   Updated: 2022/04/26 00:51:42 by tgwin            ###   ########.fr       */
+/*   Updated: 2022/04/26 21:09:54 by tgwin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
+void	dopat(int *sign, const char *str, size_t *i);
 
 int	ft_atoi(const char *str)
 {
@@ -24,9 +26,7 @@ int	ft_atoi(const char *str)
 	i = 0;
 	while (ft_isspace(str[i]))
 		i++;
-	sign = (str[i] == '-') ? -1 : 1;
-	if (str[i] == '-' || str[i] == '+')
-		i++;
+	dopat(&sign, str, &i);
 	while (ft_isdigit(str[i]))
 	{
 		if ((result > border || (result == border && (str[i] - '0') > 7))
@@ -38,4 +38,13 @@ int	ft_atoi(const char *str)
 		result = result * 10 + (str[i++] - '0');
 	}
 	return ((int)(result * sign));
+}
+
+void	dopat(int *sign, const char *str, size_t *i)
+{
+	*sign = 1;
+	if (str[*i] == '-')
+		*sign = -1;
+	if (str[*i] == '-' || str[*i] == '+')
+		(*i)++;
 }

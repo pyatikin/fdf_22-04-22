@@ -1,23 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   draw.c                                             :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: tgwin <tgwin@student.42.fr>                +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/08/06 15:27:28 by vbrazhni          #+#    #+#             */
-/*   Updated: 2022/04/22 20:11:11 by tgwin            ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
-/*
-** "fdf.h" for t_fdf type, t_point type, get_color(), WIDTH macros,
-**  HEIGHT macros, MENU_WIDTH macros, project(), new_point() and print_menu()
-** "libft.h" for FT_ABS macros and ft_bzero()
-** "mlx.h" for mlx_put_image_to_window()
-** "color.h" for MENU_BACKGROUND macros and BACKGROUND macros
-*/
-
 #include "fdf.h"
 #include "libft.h"
 #include "mlx.h"
@@ -26,6 +6,7 @@
 /*
 ** Put pixel into map image
 */
+void	dldop(int *error, t_point	delta, t_point	*cur, t_point sign);
 
 static void	put_pixel(t_fdf *fdf, int x, int y, int color)
 {
@@ -53,23 +34,33 @@ static void	draw_line(t_point f, t_point s, t_fdf *fdf)
 
 	delta.x = FT_ABS(s.x - f.x);
 	delta.y = FT_ABS(s.y - f.y);
-	sign.x = f.x < s.x ? 1 : -1;
-	sign.y = f.y < s.y ? 1 : -1;
+	sign.x = -1;
+	if (f.x < s.x)
+		sign.x = 1;
+	sign.y = -1;
+	if (f.y < s.y)
+		sign.y = 1;
 	error[0] = delta.x - delta.y;
 	cur = f;
 	while (cur.x != s.x || cur.y != s.y)
 	{
 		put_pixel(fdf, cur.x, cur.y, get_color(cur, f, s, delta));
-		if ((error[1] = error[0]) > -delta.y)
-		{
-			error[0] -= delta.y;
-			cur.x += sign.x;
-		}
-		if (error[1] < delta.x)
-		{
-			error[0] += delta.x;
-			cur.y += sign.y;
-		}
+		dldop(error, delta, &cur, sign);
+	}
+}
+
+void	dldop(int *error, t_point	delta, t_point	*cur, t_point sign)
+{
+	error[1] = error[0];
+	if (error[1] > -delta.y)
+	{
+		error[0] -= delta.y;
+		cur->x += sign.x;
+	}
+	if (error[1] < delta.x)
+	{
+		error[0] += delta.x;
+		cur->y += sign.y;
 	}
 }
 
@@ -87,7 +78,6 @@ static void	draw_background(t_fdf *fdf)
 	i = 0;
 	while (i < HEIGHT * WIDTH)
 	{
-		//image[i] = (i % WIDTH < MENU_WIDTH) ? MENU_BACKGROUND : BACKGROUND;
 		image[i] = BACKGROUND;
 		i++;
 	}
@@ -97,7 +87,7 @@ static void	draw_background(t_fdf *fdf)
 ** Draw image
 */
 
-void		draw(t_map *map, t_fdf *fdf)
+void	draw(t_map *map, t_fdf *fdf)
 {
 	int		x;
 	int		y;
@@ -120,5 +110,4 @@ void		draw(t_map *map, t_fdf *fdf)
 		y++;
 	}
 	mlx_put_image_to_window(fdf->mlx, fdf->win, fdf->img, 0, 0);
-	//print_menu(fdf);
 }

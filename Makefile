@@ -6,7 +6,7 @@
 #    By: tgwin <tgwin@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/07/05 13:39:23 by vbrazhni          #+#    #+#              #
-#    Updated: 2022/04/22 20:54:01 by tgwin            ###   ########.fr        #
+#    Updated: 2022/04/26 20:30:45 by tgwin            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,7 +41,6 @@ SOURCES_LIST = main.c\
 	draw.c\
 	color.c\
 	project.c\
-	menu.c\
 	controls.c\
 	keyboard_controls.c\
 	mouse_controls.c\

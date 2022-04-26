@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read_stack.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vbrazhni <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: tgwin <tgwin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/09 12:48:53 by vbrazhni          #+#    #+#             */
-/*   Updated: 2018/08/09 12:48:54 by vbrazhni         ###   ########.fr       */
+/*   Updated: 2022/04/26 20:24:50 by tgwin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 ** Add t_coord_val element to stack
 */
 
-void		push(t_coord_val **coords_stack, t_coord_val *new)
+void	push(t_coord_val **coords_stack, t_coord_val *new)
 {
 	if (coords_stack)
 	{
@@ -38,7 +38,7 @@ void		push(t_coord_val **coords_stack, t_coord_val *new)
 
 t_coord_val	*pop(t_coord_val **coords_stack)
 {
-	t_coord_val *top;
+	t_coord_val	*top;
 
 	top = NULL;
 	if (coords_stack && *coords_stack)

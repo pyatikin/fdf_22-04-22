@@ -1,20 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   controls_utils.c                                   :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: vbrazhni <marvin@42.fr>                    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/08/09 16:04:52 by vbrazhni          #+#    #+#             */
-/*   Updated: 2018/08/09 16:04:53 by vbrazhni         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
-/*
-** "fdf.h" for t_fdf type and draw()
-** "key_macos.h" for key codes
-*/
-
 #include "fdf.h"
 #include "key_macos.h"
 
@@ -24,13 +7,13 @@
 
 void	zoom(int key, t_fdf *fdf)
 {
-	if (key == NUM_PAD_PLUS ||
-		key == MAIN_PAD_PLUS ||
-		key == MOUSE_SCROLL_UP)
+	if (key == NUM_PAD_PLUS
+		|| key == MAIN_PAD_PLUS
+		|| key == MOUSE_SCROLL_UP)
 		fdf->camera->zoom++;
-	else if (key == NUM_PAD_MINUS ||
-		key == MAIN_PAD_MINUS ||
-		key == MOUSE_SCROLL_DOWN)
+	else if (key == NUM_PAD_MINUS
+		|| key == MAIN_PAD_MINUS
+		|| key == MOUSE_SCROLL_DOWN)
 		fdf->camera->zoom--;
 	if (fdf->camera->zoom < 1)
 		fdf->camera->zoom = 1;
