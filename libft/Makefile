@@ -6,7 +6,7 @@
 #    By: tgwin <tgwin@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/07/05 13:39:23 by vbrazhni          #+#    #+#              #
-#    Updated: 2022/04/27 12:25:17 by tgwin            ###   ########.fr        #
+#    Updated: 2022/04/27 14:04:11 by tgwin            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -104,7 +104,7 @@ RESET = \033[0m
 
 all: $(NAME)
 
-$(NAME): $(OBJECTS_DIRECTORY) $(OBJECTS)
+$(NAME): $(OBJECTS_DIRECTORY) $(OBJECTS) $(HEADERS) Makefile 
 	@ar rc $(NAME) $(OBJECTS)
 	@ranlib $(NAME)
 	@echo "\n$(NAME): $(GREEN)object files were created$(RESET)"

@@ -1,5 +1,5 @@
-#include "../includes/fdf.h"
-#include "../includes/color.h"
+#include "fdf.h"
+#include "color.h"
 
 /*
 ** Get color from default palette. Color depends on altitude

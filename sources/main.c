@@ -6,7 +6,7 @@
 /*   By: tgwin <tgwin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/29 19:37:47 by vbrazhni          #+#    #+#             */
-/*   Updated: 2022/04/27 12:52:05 by tgwin            ###   ########.fr       */
+/*   Updated: 2022/04/27 13:56:27 by tgwin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,9 @@
 ** <stdlib.h> for NULL macros
 */
 
-#include "../includes/fdf.h"
-#include "../minilibx/mlx.h"
-#include "../includes/error_message.h"
+#include "fdf.h"
+#include "mlx.h"
+#include "error_message.h"
 #include <errno.h>
 #include <fcntl.h>
 #include <stdlib.h>

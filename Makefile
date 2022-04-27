@@ -6,7 +6,7 @@
 #    By: tgwin <tgwin@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/07/05 13:39:23 by vbrazhni          #+#    #+#              #
-#    Updated: 2022/04/26 21:57:13 by tgwin            ###   ########.fr        #
+#    Updated: 2022/04/27 13:54:17 by tgwin            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,6 +20,7 @@ INCLUDES = -I$(HEADERS_DIRECTORY) -I$(LIBFT_HEADERS) -I$(MINILIBX_HEADERS)
 LIBFT = $(LIBFT_DIRECTORY)libft.a
 LIBFT_DIRECTORY = ./libft/
 LIBFT_HEADERS = $(LIBFT_DIRECTORY)includes/
+LIBFT_INCLUDES = $(LIBFT_DIRECTORY)sources/
 
 MINILIBX = $(MINILIBX_DIRECTORY)libmlx.a
 MINILIBX_DIRECTORY = ./minilibx/
@@ -67,7 +68,7 @@ endif
 
 all: $(NAME)
 
-$(NAME): $(LIBFT) $(OBJECTS_DIRECTORY) $(OBJECTS) $(MINILIBX) Makefile
+$(NAME): $(LIBFT) $(OBJECTS_DIRECTORY) $(OBJECTS) $(MINILIBX) Makefile $(HEADERS)
 	@$(CC) $(OBJECTS) $(FLAGS) $(LIBRARIES) $(INCLUDES)  -o $(NAME)
 	@echo "\n$(NAME): $(GREEN)object files were created$(RESET)"
 	@echo "$(NAME): $(GREEN)$(NAME) was created$(RESET)"
@@ -80,13 +81,13 @@ $(OBJECTS_DIRECTORY)%.o : $(SOURCES_DIRECTORY)%.c $(HEADERS)
 	@$(CC) $(FLAGS) -c $(INCLUDES) $< -o $@
 	@echo "$(GREEN).$(RESET)\c"
 
-$(LIBFT):
+$(LIBFT): $(LIBFT_DIRECTORY)Makefile $(LIBFT_HEADERS)*.h $(LIBFT_INCLUDES)*.c
 	@echo "$(NAME): $(GREEN)Creating $(LIBFT)...$(RESET)"
 	@$(MAKE) -sC $(LIBFT_DIRECTORY)
 
 $(MINILIBX):
 	@echo "$(NAME): $(GREEN)Creating $(MINILIBX)...$(RESET)"
-	@$(MAKE) -sC $(MINILIBX_DIRECTORY)
+	@$(MAKE) -C $(MINILIBX_DIRECTORY)
 
 clean:
 	@$(MAKE) -sC $(LIBFT_DIRECTORY) clean
