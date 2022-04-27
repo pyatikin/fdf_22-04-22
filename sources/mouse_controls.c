@@ -10,7 +10,6 @@ int	mouse_press(int button, int x, int y, void *param)
 {
 	t_fdf	*fdf;
 
-	printf("button = %i\n", button);
 	(void)x;
 	(void)y;
 	fdf = (t_fdf *)param;
@@ -29,7 +28,6 @@ int	mouse_release(int button, int x, int y, void *param)
 {
 	t_fdf	*fdf;
 
-	printf("button = %i\n", button);
 	(void)x;
 	(void)y;
 	(void)button;

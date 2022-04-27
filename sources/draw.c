@@ -32,8 +32,8 @@ static void	draw_line(t_point f, t_point s, t_fdf *fdf)
 	t_point	cur;
 	int		error[2];
 
-	delta.x = FT_ABS(s.x - f.x);
-	delta.y = FT_ABS(s.y - f.y);
+	delta.x = ft_abs(s.x - f.x);
+	delta.y = ft_abs(s.y - f.y);
 	sign.x = -1;
 	if (f.x < s.x)
 		sign.x = 1;

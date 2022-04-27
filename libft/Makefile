@@ -6,7 +6,7 @@
 #    By: tgwin <tgwin@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/07/05 13:39:23 by vbrazhni          #+#    #+#              #
-#    Updated: 2022/04/26 23:04:27 by tgwin            ###   ########.fr        #
+#    Updated: 2022/04/27 12:25:17 by tgwin            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -86,7 +86,9 @@ SOURCES_LIST = ft_memset.c\
 	ft_strchrs.c\
 	ft_strsubchr.c\
 	get_next_line.c\
-	dop_gnl.c
+	dop_gnl.c\
+	ft_min.c\
+	ft_abs.c
 SOURCES = $(addprefix $(SOURCES_DIRECTORY), $(SOURCES_LIST))
 OBJECTS_DIRECTORY = objects/
 OBJECTS_LIST = $(patsubst %.c, %.o, $(SOURCES_LIST))

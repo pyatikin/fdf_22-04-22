@@ -6,7 +6,7 @@
 /*   By: tgwin <tgwin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/02 10:39:59 by vbrazhni          #+#    #+#             */
-/*   Updated: 2022/04/26 20:32:46 by tgwin            ###   ########.fr       */
+/*   Updated: 2022/04/27 12:51:31 by tgwin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,26 +18,26 @@
 # define WIDTH			1920
 # define MENU_WIDTH		250
 
-typedef enum
+typedef enum s_bool
 {
 	false,
 	true
 }	t_bool;
 
-typedef enum
+typedef enum s_projection
 {
 	ISO,
 	PARALLEL
 }	t_projection;
 
-typedef struct			s_coord_val
+typedef struct s_coord_val
 {
 	int					z;
 	int					color;
 	struct s_coord_val	*next;
 }						t_coord_val;
 
-typedef struct			s_point
+typedef struct s_point
 {
 	int					x;
 	int					y;
@@ -45,7 +45,7 @@ typedef struct			s_point
 	int					color;
 }						t_point;
 
-typedef struct			s_camera
+typedef struct s_camera
 {
 	t_projection		projection;
 	int					zoom;
@@ -57,7 +57,7 @@ typedef struct			s_camera
 	int					y_offset;
 }						t_camera;
 
-typedef struct			s_map
+typedef struct s_map
 {
 	int					width;
 	int					height;
@@ -68,7 +68,7 @@ typedef struct			s_map
 	int					z_range;
 }						t_map;
 
-typedef struct			s_mouse
+typedef struct s_mouse
 {
 	char				is_pressed;
 	int					x;
@@ -77,7 +77,7 @@ typedef struct			s_mouse
 	int					previous_y;
 }						t_mouse;
 
-typedef struct			s_fdf
+typedef struct s_fdf
 {
 	void				*mlx;
 	void				*win;
@@ -92,8 +92,8 @@ typedef struct			s_fdf
 }						t_fdf;
 
 int						read_map(const int fd,
-								t_coord_val **coords_stack,
-								t_map *map);
+							t_coord_val **coords_stack,
+							t_map *map);
 
 void					push(t_coord_val **coords_stack,
 							t_coord_val *new);
@@ -107,25 +107,25 @@ t_fdf					*fdf_init(t_map *map);
 t_camera				*camera_init(t_fdf *fdf);
 
 void					stack_to_arrays(t_coord_val **coords_stack,
-										t_map *map);
+							t_map *map);
 
 void					draw(t_map *map,
 							t_fdf *fdf);
 
 int						get_default_color(int z,
-										t_map *map);
+							t_map *map);
 
 int						get_light(int start,
-								int end,
-								double percentage);
+							int end,
+							double percentage);
 
 int						get_color(t_point current,
-								t_point start,
-								t_point end,
-								t_point delta);
+							t_point start,
+							t_point end,
+							t_point delta);
 
 t_point					project(t_point p,
-								t_fdf *fdf);
+							t_fdf *fdf);
 
 void					print_menu(t_fdf *fdf);
 
@@ -134,21 +134,21 @@ int						ft_close(void *param);
 void					setup_controls(t_fdf *fdf);
 
 int						key_press(int key,
-								void *param);
+							void *param);
 
 int						mouse_press(int button,
-									int x,
-									int y,
-									void *param);
+							int x,
+							int y,
+							void *param);
 
 int						mouse_release(int button,
-									int x,
-									int y,
-									void *param);
+							int x,
+							int y,
+							void *param);
 
 int						mouse_move(int x,
-								int y,
-								void *param);
+							int y,
+							void *param);
 
 void					zoom(int key,
 							t_fdf *fdf);
@@ -160,10 +160,10 @@ void					rotate(int key,
 							t_fdf *fdf);
 
 void					flatten(int key,
-								t_fdf *fdf);
+							t_fdf *fdf);
 
 void					change_projection(int key,
-										t_fdf *fdf);
+							t_fdf *fdf);
 
 t_bool					ft_isnumber(char *str, int base);
 

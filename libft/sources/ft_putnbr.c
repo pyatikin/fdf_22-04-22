@@ -6,7 +6,7 @@
 /*   By: tgwin <tgwin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/04 12:29:08 by vbrazhni          #+#    #+#             */
-/*   Updated: 2022/04/25 23:58:57 by tgwin            ###   ########.fr       */
+/*   Updated: 2022/04/27 12:26:21 by tgwin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	ft_putnbr(int n)
 
 	if (n < 0)
 		ft_putchar('-');
-	num = (unsigned)FT_ABS(n);
+	num = (unsigned)ft_abs(n);
 	if (num >= 10)
 	{
 		ft_putnbr(num / 10);

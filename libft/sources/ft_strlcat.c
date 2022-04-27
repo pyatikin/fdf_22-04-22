@@ -6,7 +6,7 @@
 /*   By: tgwin <tgwin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/30 16:55:18 by vbrazhni          #+#    #+#             */
-/*   Updated: 2022/04/26 00:58:56 by tgwin            ###   ########.fr       */
+/*   Updated: 2022/04/27 12:22:33 by tgwin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 	size_t	result_len;
 
 	dst_len = ft_strlen(dst);
-	result_len = FT_MIN(dstsize, dst_len) + ft_strlen(src);
+	result_len = ft_min(dstsize, dst_len) + ft_strlen(src);
 	if (!(dstsize <= dst_len))
 	{
 		dst += dst_len;
